@@ -1,4 +1,4 @@
-# ISHA — local-first JARVIS-style desktop assistant
+# ISHA — local-first AGI-style desktop assistant
 
 ISHA is a PyQt5 desktop assistant whose **brain is a local GGUF model** (llama.cpp) and whose **hands are
 94 validated, permission-gated tools** that act on your PC: apps, files, search, system info, software
