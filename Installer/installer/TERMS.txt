@@ -1,0 +1,31 @@
+ISHA TERMS & CONDITIONS (version 1.0)
+
+1. What ISHA is. ISHA is a desktop assistant that runs AI models locally on your computer and can act
+   on your computer through tools (open apps, manage files, run code, install software, send messages
+   you ask it to send).
+
+2. Your control and responsibility. ISHA asks for your approval before destructive, privileged or
+   communication actions, according to the autonomy level you choose. You are responsible for the
+   actions you approve. Review approval prompts carefully. Generated code and commands can have bugs.
+
+3. No warranty. ISHA is provided "as is", without warranty of any kind. AI models can be wrong,
+   incomplete or out of date. Do not rely on ISHA for medical, legal, financial or safety-critical
+   decisions.
+
+4. Third-party components. The installer downloads third-party software under their own licenses:
+   Python (PSF License), Python packages from PyPI (various licenses), llama.cpp (MIT) from its official
+   GitHub releases, and AI models from Hugging Face under each model's license (shown before download).
+   By installing them you agree to their licenses.
+
+5. Third-party services. Features such as WhatsApp, web search, opening websites and software
+   installation use external services and are subject to those services' terms. ISHA does not bypass
+   their authentication, security or rate limits.
+
+6. Acceptable use. Do not use ISHA to break the law, harm others, access systems or accounts you are
+   not authorised to use, or send unsolicited messages.
+
+7. Local data. ISHA stores its configuration, memory, chat history, file index and activity log on your
+   computer only. The installer records the version of these terms and when you accepted them.
+
+8. Uninstalling. You can uninstall ISHA at any time. Your models, configuration and memory are kept
+   unless you choose to remove them.

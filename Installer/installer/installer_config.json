@@ -1,0 +1,60 @@
+{
+  "app_name": "ISHA",
+  "app_version": "0.5.0",
+  "publisher": "ISHA Project",
+  "terms_version": "1.0",
+  "python": {
+    "min": "3.10",
+    "max_tested": "3.13",
+    "recommended": "3.12",
+    "windows_installer_version": "3.12.10",
+    "windows_installer_url": "https://www.python.org/ftp/python/3.12.10/python-3.12.10-amd64.exe",
+    "windows_winget_id": "Python.Python.3.12",
+    "authenticode_signer": "Python Software Foundation"
+  },
+  "dependency_groups": {
+    "core":      {"packages": ["PyQt5", "psutil", "requests"], "required": true,
+                  "label": "Core (GUI, system info, web)"},
+    "system":    {"packages": ["pyautogui", "send2trash", "pyperclip"],
+                  "label": "PC control (keyboard/mouse, recycle bin, clipboard)"},
+    "windows":   {"packages": ["pywin32", "pycaw", "comtypes"], "platforms": ["Windows"],
+                  "label": "Windows integration (windows, audio mixer)"},
+    "voice":     {"packages": ["edge-tts", "pygame", "pyttsx3"], "label": "Voice output (TTS)"},
+    "stt":       {"packages": ["SpeechRecognition", "PyAudio"], "label": "Speech recognition (microphone)",
+                  "linux_note": "PyAudio needs the PortAudio library: sudo apt install portaudio19-dev python3-dev"},
+    "vision":    {"packages": ["opencv-python-headless", "mediapipe", "pytesseract", "Pillow"],
+                  "label": "Vision, camera and hand gestures",
+                  "note": "mediapipe publishes wheels for Python 3.10-3.12 only"}
+  },
+  "import_names": {
+    "PyQt5": "PyQt5", "psutil": "psutil", "requests": "requests", "pyautogui": "pyautogui",
+    "send2trash": "send2trash", "pyperclip": "pyperclip", "pywin32": "win32api", "pycaw": "pycaw",
+    "comtypes": "comtypes", "edge-tts": "edge_tts", "pygame": "pygame", "pyttsx3": "pyttsx3",
+    "SpeechRecognition": "speech_recognition", "PyAudio": "pyaudio",
+    "opencv-python-headless": "cv2", "mediapipe": "mediapipe", "pytesseract": "pytesseract",
+    "Pillow": "PIL"
+  },
+  "features": {
+    "voice":       {"label": "Voice / TTS", "groups": ["voice"], "default": true},
+    "stt":         {"label": "Speech recognition", "groups": ["stt"], "default": true},
+    "vision":      {"label": "Vision (screen/image understanding, camera)", "groups": ["vision"], "default": false},
+    "file_index":  {"label": "Fast file indexing", "groups": [], "default": true},
+    "whatsapp":    {"label": "WhatsApp integration", "groups": ["system"], "default": true},
+    "advanced_pc": {"label": "Advanced PC control (keyboard, processes, power, terminal)", "groups": ["system"], "default": true},
+    "coding":      {"label": "Coding tools (create/run/fix projects)", "groups": [], "default": true}
+  },
+  "feature_tools": {
+    "vision": ["describe_image", "describe_screen"],
+    "whatsapp": ["send_whatsapp_message", "save_whatsapp_contact", "list_whatsapp_contacts"],
+    "advanced_pc": ["type_text", "press_hotkey", "kill_process", "system_power_action",
+                    "run_terminal_command", "clipboard_write"],
+    "coding": ["create_code_project", "run_project", "fix_code_file", "create_and_save_code",
+               "write_and_save_code", "run_code_file", "list_and_run_desktop_code", "autonomous_code_agent"]
+  },
+  "app_files": ["mani.py", "isha_core", "installer", "icon", "requirements.txt", "isha_config.example.json",
+                "README.md", "INSTALL.md", "INSTALLER.md", "TROUBLESHOOTING.md", "ARCHITECTURE.md",
+                "TOOLS.md", "MODELS.md", "CONFIGURATION.md", "SECURITY.md", "DEVELOPMENT.md",
+                "TESTING.md", "CHANGELOG.md", "LICENSE"],
+  "runtime_space_gb": 1.6,
+  "manifest_update_url": ""
+}

@@ -1,0 +1,21 @@
+ISHA PRIVACY NOTICE
+
+ISHA is designed as a local-first assistant. This is exactly where your data goes:
+
+  Local AI inference .......... LOCAL - models run on this computer via llama.cpp
+  Conversation processing ..... LOCAL by default - nothing is sent to a cloud AI
+  File search / file index .... LOCAL - the index (names, sizes, dates; no file contents) stays on disk
+  Memory & chat history ....... LOCAL - stored in the ISHA folder
+  Activity log ................ LOCAL - secrets are redacted
+  Voice output (TTS) .......... ONLINE if you use the neural "edge-tts" voice (Microsoft service);
+                                offline voices (pyttsx3 / system voice) stay local
+  Speech recognition (STT) .... ONLINE: the SpeechRecognition default recognizer sends audio to
+                                Google's speech service when you use the microphone
+  WhatsApp .................... ONLINE via your own WhatsApp Desktop / WhatsApp Web session,
+                                only when you ask ISHA to send a message
+  Web search / opening sites .. ONLINE, only when you ask
+  Software installation ....... ONLINE via official package managers, only when you ask
+  Installer downloads ......... ONLINE: python.org, PyPI, GitHub (llama.cpp), Hugging Face (models)
+
+ISHA is therefore NOT "100% offline": the features marked ONLINE need the internet. Everything else
+works without it once installed. ISHA has no telemetry and sends no usage data to its developers.
