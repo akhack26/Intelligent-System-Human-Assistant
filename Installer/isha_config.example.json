@@ -1,0 +1,27 @@
+{
+  "models": {
+    "general": "models/general/qwen2.5-3b-instruct-q4_k_m.gguf",
+    "coding": "models/coding/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf",
+    "reasoning": "",
+    "study": "",
+    "fast": "",
+    "vision": ""
+  },
+  "model_mode": "auto",
+  "hardware_aware_loading": true,
+  "max_loaded_models": 1,
+  "gpu_layers": 0,
+  "context_length": 4096,
+  "autonomy_level": "high",
+  "confirm_risky_tools": true,
+  "trusted_messaging": false,
+  "trusted_tools": [],
+  "blocked_tools": [],
+  "max_auto_fix_attempts": 3,
+  "code_run_timeout": 20,
+  "file_index_enabled": true,
+  "file_index_roots": [],
+  "preferred_package_manager": "",
+  "whatsapp_country_code": "91",
+  "show_agent_panel": false
+}
