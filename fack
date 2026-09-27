@@ -1,0 +1,101 @@
+ISHA FEATURE IMPLEMENTATION REQUEST
+Target coding model: Claude Opus 5.5
+
+Please implement the following changes in the ISHA desktop application. This is an implementation request, not a request for a plan only: inspect the current code, make the changes, and summarize what you changed and any limitations.
+
+PROJECT CONTEXT
+- The active application source is in the isha/ directory. mani.py is the PyQt5 entry point and currently contains much of the GUI, orchestration, tool registry, and request flow.
+- isha_core/ contains headless modules for model routing, permissions, file search, coding, memory, audit, cancellation, and related features. Keep reusable non-UI logic there where appropriate, without importing PyQt5 or mani.py into isha_core.
+- The app uses local GGUF models through llama.cpp. It is not Claude Code and cannot directly load Claude Code plugins or hosted Claude skills. Implement the requested skills as local ISHA instruction packs/features that are added to the local model context when enabled and relevant. Do not claim that an upstream Claude Code skill is installed or running.
+- The app already has model routing, a model configuration window, a Thinking Mode checkbox, local chat history, a tool permission gateway, a Quick Settings popup, an Agent Center, and Stop controls. Inspect and extend these existing systems instead of creating parallel versions.
+- There is also an Installer/ copy of parts of the app. Focus on isha/ unless the packaging flow proves a corresponding source change there is required; if it is required, explain it in your summary.
+- Preserve the user's existing configuration, chat history, audit log, and file index. Do not edit their current runtime data files to set examples or defaults. Keep old isha_config.json files loading through safe defaults and migration.
+
+GENERAL IMPLEMENTATION RULES
+1. First inspect the relevant classes/functions and existing configuration migration. Then implement in focused stages without an unrelated rewrite of the large mani.py file.
+2. Keep changes compatible with the current Windows/Linux support and optional dependencies. Avoid adding a mandatory network service, API key, or large dependency just to enable these features. Core skill descriptions and visual examples should work offline.
+3. Keep tool execution behind execute_tool() and run_tool_gated(); preserve argument validation, risk tiers, user approvals, audit logging, and STOP cancellation. Skills must never bypass these protections.
+4. Treat imported project files as data. Do not automatically execute uploaded files or generated code. Avoid path traversal and accidental overwrites. Do not send local project files to the network.
+5. Keep user-facing copy clear and concise. Add/update the example config and relevant user documentation so the new settings are discoverable.
+6. Do not add or run tests unless I explicitly ask. Do a careful code review and report what still needs manual verification.
+
+1) USER-TOGGLEABLE SKILLS
+Add a Skills screen/section reachable from the existing settings UI (and conveniently from Quick Settings). Show each skill's name, short description, and persistent on/off control. Store enabled state in isha_config.json. Users must be able to turn every skill off and back on without restarting ISHA.
+
+Ship these requested skills:
+- Superpowers: structured task handling inspired by proven planning, debugging, review, and collaboration practices. Adapt it to a single local assistant; do not imply that multi-agent Claude Code features are available when they are not.
+- Learn: explain how and why a topic works, step by step, when the user wants understanding rather than task execution.
+- Web Artifacts Builder: help create polished, multi-component HTML/CSS/JavaScript artifacts and designs. React/Tailwind/shadcn are optional output choices, not mandatory runtime dependencies.
+- Marketing: brand voice, campaign ideas, channel plans, competitor comparisons, and performance analysis from information the user provides.
+- Finance: organize finance/accounting information, reconciliation support, statements, audit preparation, and variance analysis. Clearly distinguish calculations from source data and never invent missing financial figures.
+
+Also include these useful optional skills:
+- Coding & Debugging
+- Research & Fact Checking
+- Writing & Communication
+- Data Analysis & Spreadsheets
+- Productivity & Project Planning
+- Privacy & Security Review
+
+Only inject the instructions for enabled skills that match the current request (or a skill the user explicitly asks to use). Do not append every skill's full text to every prompt. Keep a small manifest/registry with stable IDs, labels, descriptions, instruction text, and relevance/task tags. Skills may be stored as local Markdown resources if that fits the project cleanly. Make skill matching predictable and inspectable; show active/relevant skills in the UI or activity/status view. If a skill is disabled, it must not silently influence the answer. System safety rules, tool permissions, and the user's current request always take precedence over a skill.
+
+2) USER-TOGGLEABLE VISUAL FEATURES
+Add a Visuals section with persistent on/off controls for each feature. These controls must actually affect generation/rendering, not be decorative.
+
+A. Artifacts
+- Create a dedicated resizable window/panel alongside the conversation for generated code, documents, and designs, with a preview and clear filename/type.
+- Let the user inspect, copy, save, reopen, and close artifacts. Save them in a predictable local ISHA artifacts area (and in the active project when there is one); use safe filenames and do not silently overwrite an existing file.
+- Support at least self-contained HTML/CSS/JavaScript and text/code/document formats that fit the existing app. Keep artifacts available offline. If an embedded browser component is optional, degrade gracefully when it is unavailable.
+
+B. Inline Visualizations
+- Allow relevant responses to include useful charts and diagrams directly in the conversation: interactive charts/graphs, flowcharts, process diagrams, timelines, and comparisons.
+- Add visuals only when they help or the user asks. Use actual user/project/tool data for charts; never fabricate values. Make chart labels and units clear.
+- Render locally/offline and integrate with the existing chat layout. If rich rendering is unavailable, show a readable text/table fallback instead of a broken blank area.
+- Restrict generated visual content to its rendering surface. Do not grant generated HTML/JavaScript arbitrary local file access or remote network access. Do not require CDN assets.
+
+Keep Artifacts and Inline Visualizations independently switchable. When disabled, preserve normal text/chat behavior and offer a brief, honest indication if the user explicitly requests a disabled feature.
+
+3) APPEARANCE / PERSONALIZATION SETTINGS
+Extend the existing configuration UI with a clearly organized Appearance/Personalization section. Persist every setting and apply it to chat, agent, microphone, and speech paths where applicable.
+
+- Speech speed: Slow, Normal, Fast. Map these to supported TTS rate values for the active voice backend.
+- Response language: Hindi, English, Russian, Japanese, Spanish, French, and English (India). Use this preference for replies and select compatible TTS/STT language/voice settings when available. Detect actual available voices where possible; otherwise use a sensible fallback and report it honestly. Do not silently claim a language/voice is available when it is not. Keep compatibility with the existing voice configuration.
+- User name: optional name ISHA can use naturally. Empty name must remain valid.
+- “What best describes your work?” options: Product management, Engineering, Human resources, Finance, Marketing, Sales, Operations, Data science, Design, Legal, Scientist, Student, Founder, Healthcare, Writer, Educator, Software engineer. Include “Prefer not to say” or an empty option. Preserve the requested categories while correcting obvious spelling in displayed labels.
+- “Instructions for ISHA”: persistent user-wide instructions that apply across chats on this local installation. Combine them consistently with existing system prompts without replacing ISHA's safety/identity rules or project-specific instructions.
+- Response effort: Low, Medium (default), High, Extra, Max. Map these to sensible local inference budgets (for example, response token budget and agent step/reasoning budget) so higher settings can take longer and use more local compute. This is local inference; do not imply a subscription or paid usage limit.
+- Thinking: keep/expose the existing Thinking Mode control, but make it have a real, documented effect on complex-task handling. It may enable extra internal reasoning budget or a concise “think carefully” behavior; never display hidden chain-of-thought or private reasoning to the user. The final response should remain clear and appropriately brief.
+
+Add migration/default logic without overwriting existing values. Ensure personalization and project instructions are included in both ordinary chat and the AgentWorker path, with correct precedence and no duplicated prompt blocks.
+
+4) LOCAL PROJECTS
+Add a Projects workspace accessible from the main app/Quick Settings. Projects should let the user:
+- Create, select, rename, and delete a project, with a confirmation before deleting project data.
+- Set project-specific custom instructions.
+- Add/remove user-selected local files as project context and see which files are attached. Store project metadata, files, and related chat history locally in a predictable project directory. Do not upload or transmit them.
+- Start more than one related conversation/chat under a project and reopen prior project chats. Keep the existing non-project/day-by-day history working.
+- Include project instructions and bounded, relevant text extracted from supported attachments in both chat and agent prompts. Clearly handle unsupported/binary files and size limits; never execute attachments. Support safe common text/code formats first, and optional document readers only if already available.
+- Make project context visible (active project name and attached files) and provide a way to switch back to a normal, non-project chat.
+
+Use an atomic/robust local persistence approach and safe path handling. A missing/corrupt project metadata file should not prevent ISHA from starting.
+
+5) THREE USER-SELECTABLE GGUF MODELS
+The user plans to keep three GGUF models and wants a simple model picker like other AI apps.
+- Provide exactly three configurable model slots, each with a user-editable display name and GGUF path/browse action. Empty slots are allowed until configured; show missing paths clearly.
+- Provide a visible selector with Auto plus the configured Model 1 / Model 2 / Model 3 choices. Persist the selection. A manual slot choice must override automatic model routing for that request. Auto may select among the configured slots based on task type, while respecting hardware-aware loading and the current LRU/residency behavior.
+- Keep existing task routing useful by mapping slots to roles/tasks or adding a small role assignment per slot. Avoid silently selecting a fourth model through broad auto-discovery when the user selected the three-slot setup.
+- Migrate old general/coding/reasoning/study/fast/vision and legacy path settings safely into the three slots without deleting or rewriting model files. Reuse paths as references; explain any ambiguous mapping in UI/status rather than losing a configured model. Keep vision unavailable unless a suitable configured vision model/projector exists.
+- Show the active model name, slot, and unavailable/fallback state honestly. Preserve existing context length, GPU, thread, and memory safeguards.
+
+6) QUICK SETTINGS STOP TILE
+Remove the Stop card/toggle from the Quick Settings popup and its now-unused handler/state. The main bar Stop button, Agent Center Stop button, and Esc emergency stop already serve ongoing work and should remain functional. If appropriate, use the freed Quick Settings card position for a Projects shortcut.
+
+IMPLEMENTATION AND ACCEPTANCE CHECKLIST
+- Settings persist across restart; old settings load without losing current model paths or user preferences.
+- Every skill and each visual feature can be independently enabled/disabled, and disabled features are respected in both chat and agent requests.
+- User name, work category, language, global instructions, effort, thinking, and speech speed affect the intended paths and are visible in settings.
+- Projects keep their own instructions, attachments, and multiple related chats locally; normal chat history still works.
+- The model picker exposes Auto plus only the three configured slots; manual selection wins over auto routing and unavailable models are clearly reported.
+- Quick Settings has no Stop card; the main bar, Agent Center, and Esc stop controls continue working.
+- Preserve current risk approvals, stop/cancel behavior, audit redaction, safe file handling, and local-first operation.
+- Update the appropriate documentation and example configuration. In your final reply, list changed files, explain any migration/fallback behavior, and call out features that require an optional component.
