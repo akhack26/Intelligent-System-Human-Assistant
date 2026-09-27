@@ -1,0 +1,94 @@
+{
+  "2026-09-25": [
+    {
+      "time": "09:39 AM",
+      "role": "isha",
+      "text": "Good to see you, Boss!"
+    },
+    {
+      "time": "09:40 AM",
+      "role": "user",
+      "text": "hy isha"
+    },
+    {
+      "time": "09:40 AM",
+      "role": "isha",
+      "text": "GGUF model not found: C:\\Users\\User\\Desktop\\ISHA_v0.5\\ISHA\\models\\llama-3.2-3b-instruct-q4_k_m.gguf\nSearched:\n  C:\\Users\\User\\Desktop\\ISHA_v0.5\\ISHA\\models\n  C:\\Users\\User\\Desktop\\ISHA_v0.5\\ISHA\n  C:\\Users\\User\\models\n  C:\\Users\\User\\Downloads\n'C:\\Users\\User\\Desktop\\ISHA_v0.5\\ISHA\\models' folder banao aur usmein .gguf file rakho, ya 'C:\\Users\\User\\Desktop\\ISHA_v0.5\\ISHA' me directly rakho."
+    },
+    {
+      "time": "09:43 AM",
+      "role": "isha",
+      "text": "Good to see you, Boss!"
+    },
+    {
+      "time": "09:43 AM",
+      "role": "user",
+      "text": "hello"
+    },
+    {
+      "time": "09:43 AM",
+      "role": "isha",
+      "text": "GGUF model not found: C:\\Users\\User\\Desktop\\ISHA_v0.5\\ISHA\\models\\llama-3.2-3b-instruct-q4_k_m.gguf\nSearched:\n  C:\\Users\\User\\Desktop\\ISHA_v0.5\\ISHA\\models\n  C:\\Users\\User\\Desktop\\ISHA_v0.5\\ISHA\n  C:\\Users\\User\\models\n  C:\\Users\\User\\Downloads\n'C:\\Users\\User\\Desktop\\ISHA_v0.5\\ISHA\\models' folder banao aur usmein .gguf file rakho, ya 'C:\\Users\\User\\Desktop\\ISHA_v0.5\\ISHA' me directly rakho."
+    },
+    {
+      "time": "09:44 AM",
+      "role": "isha",
+      "text": "Good to see you, Boss!"
+    },
+    {
+      "time": "09:44 AM",
+      "role": "user",
+      "text": "hello isha"
+    },
+    {
+      "time": "09:45 AM",
+      "role": "isha",
+      "text": "hello! how can i help you today?"
+    },
+    {
+      "time": "09:45 AM",
+      "role": "user",
+      "text": "mere liye eka login page banake do"
+    },
+    {
+      "time": "09:45 AM",
+      "role": "isha",
+      "text": "main aapke liye ek login page bana sakta hoon. ab aapko kya details chahiye? username aur password ke liye, ya koi aur jaankari?"
+    },
+    {
+      "time": "09:46 AM",
+      "role": "user",
+      "text": "bin clean kar do"
+    },
+    {
+      "time": "09:46 AM",
+      "role": "isha",
+      "text": "Agent error: ValueError: Requested tokens (6728) exceed context window of 4096"
+    },
+    {
+      "time": "09:48 AM",
+      "role": "user",
+      "text": "recycle bin clian kar do"
+    },
+    {
+      "time": "09:48 AM",
+      "role": "isha",
+      "text": "recycle bin khol diya."
+    },
+    {
+      "time": "10:18 AM",
+      "role": "isha",
+      "text": "Good to see you, Boss!"
+    },
+    {
+      "time": "10:20 AM",
+      "role": "user",
+      "text": "chromr close kar do"
+    },
+    {
+      "time": "10:20 AM",
+      "role": "isha",
+      "text": "Agent error: ValueError: Requested tokens (6606) exceed context window of 4096"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{"time": "2026-09-25 09:40:31", "ts": 1790309431.6173272, "kind": "request", "text": "hy isha", "task": "GENERAL_CHAT"}
+{"time": "2026-09-25 09:40:31", "ts": 1790309431.7239304, "kind": "route", "task": "GENERAL_CHAT", "role": null, "model": "none", "manual": false, "notes": ["no 'general' model installed"]}
+{"time": "2026-09-25 09:40:41", "ts": 1790309441.0046058, "kind": "stop", "source": "user"}
+{"time": "2026-09-25 09:40:42", "ts": 1790309442.109638, "kind": "stop", "source": "user"}
+{"time": "2026-09-25 09:43:20", "ts": 1790309600.5455961, "kind": "request", "text": "hello", "task": "GENERAL_CHAT"}
+{"time": "2026-09-25 09:43:20", "ts": 1790309600.6553652, "kind": "route", "task": "GENERAL_CHAT", "role": null, "model": "none", "manual": false, "notes": ["no 'general' model installed"]}
+{"time": "2026-09-25 09:44:02", "ts": 1790309642.930459, "kind": "stop", "source": "user"}
+{"time": "2026-09-25 09:44:59", "ts": 1790309699.1523547, "kind": "request", "text": "hello isha", "task": "GENERAL_CHAT"}
+{"time": "2026-09-25 09:44:59", "ts": 1790309699.2578921, "kind": "route", "task": "GENERAL_CHAT", "role": "general", "model": "llama-3.2-3b-instruct-q4_k_m.gguf", "manual": false, "notes": []}
+{"time": "2026-09-25 09:45:27", "ts": 1790309727.3422263, "kind": "request", "text": "mere liye eka login page banake do", "task": "GENERAL_CHAT"}
+{"time": "2026-09-25 09:45:27", "ts": 1790309727.445511, "kind": "route", "task": "GENERAL_CHAT", "role": "general", "model": "llama-3.2-3b-instruct-q4_k_m.gguf", "manual": false, "notes": []}
+{"time": "2026-09-25 09:46:28", "ts": 1790309788.812239, "kind": "request", "text": "bin clean kar do", "task": "GENERAL_CHAT"}
+{"time": "2026-09-25 09:46:28", "ts": 1790309788.9150944, "kind": "route", "task": "GENERAL_CHAT", "role": "general", "model": "llama-3.2-3b-instruct-q4_k_m.gguf", "manual": false, "notes": []}
+{"time": "2026-09-25 09:46:56", "ts": 1790309816.988018, "kind": "model_mode", "mode": "general", "source": "gui"}
+{"time": "2026-09-25 09:47:44", "ts": 1790309864.4573617, "kind": "autonomy", "level": "medium", "source": "gui"}
+{"time": "2026-09-25 09:47:55", "ts": 1790309875.8174143, "kind": "model_mode", "mode": "auto", "source": "gui"}
+{"time": "2026-09-25 09:48:23", "ts": 1790309903.7869163, "kind": "request", "text": "recycle bin clian kar do", "task": "SYSTEM_CONTROL"}
+{"time": "2026-09-25 09:48:26", "ts": 1790309906.3253706, "kind": "approval", "tool": "open_app", "args": {"app_name": "recycle bin"}, "risk": "safe", "approval": "approved"}
+{"time": "2026-09-25 09:48:26", "ts": 1790309906.3272583, "kind": "approval", "tool": "open_app", "args": {"app_name": "recycle bin"}, "risk": "safe", "approval": "approved"}
+{"time": "2026-09-25 09:48:26", "ts": 1790309906.3344655, "kind": "tool", "tool": "open_app", "args": {"app_name": "recycle bin"}, "success": true, "result": "recycle bin khol diya.", "duration_ms": 5, "risk": "safe", "approval": "user", "model": "llama-3.2-3b-instruct-q4_k_m.gguf", "task": "GENERAL_CHAT"}
+{"time": "2026-09-25 09:48:45", "ts": 1790309925.081686, "kind": "stop", "source": "user"}
+{"time": "2026-09-25 09:48:49", "ts": 1790309929.2453594, "kind": "stop", "source": "user"}
+{"time": "2026-09-25 09:48:56", "ts": 1790309936.2298048, "kind": "stop", "source": "user"}
+{"time": "2026-09-25 10:20:14", "ts": 1790311814.4508438, "kind": "request", "text": "chromr close kar do", "task": "QUICK_COMMAND"}
+{"time": "2026-09-25 10:20:14", "ts": 1790311814.5581067, "kind": "route", "task": "QUICK_COMMAND", "role": "general", "model": "llama-3.2-3b-instruct-q4_k_m.gguf", "manual": false, "notes": ["no 'fast' model installed", "using 'general' model instead"]}
