@@ -1,0 +1,28 @@
+# Core (auto-installed on first run by mani.py)
+PyQt5>=5.15
+psutil>=5.9
+
+# Local model backend: mani.py installs a PREBUILT llama-cpp-python wheel or
+# downloads the official prebuilt llama-server binary. Do not "pip install
+# llama-cpp-python" on machines without a C++ toolchain.
+
+# Optional capabilities
+requests            # website resolution / YouTube lookup
+edge-tts            # neural TTS (online)
+pygame              # audio playback for TTS / music
+pyttsx3             # offline TTS fallback
+SpeechRecognition   # speech-to-text
+PyAudio             # microphone
+pyautogui           # keyboard/mouse automation (WhatsApp send, screenshots)
+pyperclip           # clipboard
+send2trash          # recoverable deletes (Recycle Bin / Trash)
+opencv-python-headless  # camera / hand gestures
+mediapipe           # hand gestures
+pytesseract         # OCR fallback for vision (also install the Tesseract binary)
+Pillow              # images for OCR
+pywin32; sys_platform == "win32"
+pycaw; sys_platform == "win32"
+comtypes; sys_platform == "win32"
+
+# Development
+pytest
